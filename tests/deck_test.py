@@ -1,5 +1,5 @@
 import unittest
-from deck import Cart
+from ..deck import *
 
     # def setUp(self):
     #     pass
@@ -26,6 +26,17 @@ class Test_Cart(unittest.TestCase):
     
     def test_str_cart(self):
         self.assertEqual(self.carts[0].__str__(),"num: 12, symbol: Symbol_1")
+
+
+class Test_Deck(unittest.TestCase):
+
+    def setUp(self):
+        self.Deck_1 = Deck()
+        self.Deck_2 = Deck()
+
+    def test_num_of_carts(self):
+        self.assertEqual(self.Deck_1.num, 52)
+
 
 if __name__ == '__main__':
     unittest.main()

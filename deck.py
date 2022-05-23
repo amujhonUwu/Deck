@@ -50,9 +50,10 @@ class Deck:
     #trebol, diamante, corazon, picas
 
     def __init__(self, carts:list = None, unused_carts:list = None):
-        self.__carts=[]
-        self.num = self.__count()
+        self.carts = carts
         if unused_carts != None: self.__unused = unused_carts
+        if carts == None: self.__generate_carts()
+        self.num = self.__count()
             
 
     def __generate_carts(self, restore:bool = True):
@@ -60,11 +61,12 @@ class Deck:
         __new_carts = []
         if restore:
             for symbol in self.__symbols:
-                for num in range(13):
+                for num in range(1, 14):
                     __new_carts.append(Cart(num, symbol))
             self.__carts = __new_carts
         else:
             pass
+        self.__drop_unused()
 
     def __drop_unused(self):
         for cart in self.__unused:
